@@ -1,0 +1,4 @@
+type RaribleOwner @entity {
+  id: ID!
+  owner: Bytes!
+}

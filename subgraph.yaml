@@ -1,0 +1,25 @@
+specVersion: 0.0.2
+description: Owners of Rarible
+repository: https://github.com/Cuinf/Rarible-subgraph
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: Rariable
+    network: mainnet
+    source:
+      address: '0x60f80121c31a0d46b5279700f9df786054aa5ee5'
+      abi: Rarible
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - RaribleOwner
+      abis:
+        - name: Rarible
+          file: ./abis/Rarible.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+      file: ./src/mapping.ts
