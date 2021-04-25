@@ -23,22 +23,3 @@ dataSources:
         - event: Transfer(indexed address,indexed address,indexed uint256)
           handler: handleTransfer
       file: ./src/mapping.ts
-    - kind: ethereum/contract
-      name: Rarible
-      network: mainnet
-      source:
-        address: '0x6a5ff3ceecae9ceb96e6ac6c76b82af8b39f0eb3'
-        abi: Rarible
-      mapping:
-        kind: ethereum/events
-        apiVersion: 0.0.4
-        language: wasm/assemblyscript
-        entities:
-          - RaribleOwner
-        abis:
-          - name: Rarible
-            file: ./abis/Rarible.json
-        eventHandlers:
-          - event: Transfer(indexed address,indexed address,indexed uint256)
-            handler: handleTransfer
-        file: ./src/mapping.ts
