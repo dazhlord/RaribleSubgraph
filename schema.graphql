@@ -1,9 +1,9 @@
 type RaribleOwner @entity {
-  id: ID!
-  owner: Bytes!
+  id: ID! #token id
+  owner: Bytes! #owner address
 }
 
 type RaribleBalance @entity {
   id: ID! #owner address
-  amount: BigInt! 
+  amount: BigInt! #the amount of the token
 }
