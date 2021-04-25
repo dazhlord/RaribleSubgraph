@@ -17,12 +17,9 @@ export function handleTransfer(event: Transfer): void {
         if (raribleBalance.amount > BigInt.fromI32(0)) {
             raribleBalance.amount = raribleBalance.amount - BigInt.fromI32(1)
         }
-    } else {
-        raribleBalance = new RaribleBalance(previousOwner)
-        raribleBalance.amount = BigInt.fromI32(0)
-    }
-    raribleBalance.save()
-
+        raribleBalance.save()
+    } 
+    
     let newOwner = event.params.to.toHex()
     let newRaribleBalance = RaribleBalance.load(newOwner)
     if (newRaribleBalance == null) {
