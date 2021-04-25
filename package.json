@@ -1,16 +1,15 @@
 {
-  "name": "example",
+  "name": "Rarible subgraph",
   "version": "0.1.0",
-  "repository": "https://github.com/graphprotocol/example-subgraph",
+  "repository": "https://github.com/Cuinf/Rarible-subgraph",
   "license": "MIT",
   "scripts": {
-    "build-contract": "solc contracts/Gravity.sol --abi -o abis --overwrite && solc contracts/Gravity.sol --bin -o bin --overwrite",
-    "create": "graph create example --node https://api.thegraph.com/deploy/",
-    "create-local": "graph create example --node http://127.0.0.1:8020",
     "codegen": "graph codegen",
     "build": "graph build",
-    "deploy": "graph deploy example --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/",
-    "deploy-local": "graph deploy example --ipfs http://localhost:5001 --node http://127.0.0.1:8020"
+    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ Cuinf/Rarible",
+    "create-local": "graph create --node http://localhost:8020/ Cuinf/Rarible",
+    "remove-local": "graph remove --node http://localhost:8020/ Cuinf/Rarible",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 Cuinf/Rarible"
   },
   "devDependencies": {
     "@graphprotocol/graph-cli": "^0.20.0",
