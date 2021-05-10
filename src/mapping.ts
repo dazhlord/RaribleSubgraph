@@ -10,7 +10,7 @@ export function handleTransfer(event: Transfer): void {
     }
     rarible.tokenId = event.params.tokenId
     rarible.owner = event.params.to
-    rarible.contract = Address.fromString("0x60f80121c31a0d46b5279700f9df786054aa5ee5")
+    rarible.contract = event.address
     rarible.save()
 
     let previousOwner = event.params.from.toHex()
