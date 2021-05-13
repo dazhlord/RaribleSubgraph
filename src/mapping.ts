@@ -1,4 +1,4 @@
-import { Transfer, Rariable } from '../generated/Rarible/Rarible'
+import { Transfer, Rarible } from '../generated/Rarible/Rarible'
 import { RaribleOwner, RaribleBalance, TransferTrace } from '../generated/schema'
 import { BigInt } from "@graphprotocol/graph-ts"
 
@@ -24,7 +24,7 @@ export function handleTransfer(event: Transfer): void {
     transferEntity.save()
 
     //update the amount of the token hold by the owner "to"
-    let contract = Rariable.bind(event.address)
+    let contract = Rarible.bind(event.address)
     let raribleBalance = new RaribleBalance(event.params.to.toHex())
     raribleBalance.amount = contract.balanceOf(event.params.to)
     raribleBalance.save()
