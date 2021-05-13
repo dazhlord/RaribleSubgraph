@@ -26,7 +26,7 @@ export function handleTransfer(event: Transfer): void {
     //update the amount of the token hold by the owner "to"
     let contract = Rarible.bind(event.address)
     let raribleBalance = new RaribleBalance(event.params.to.toHex())
-    raribleBalance.amount = contract.balanceOf(event.params.to)
+    raribleBalance.amount = contract.try_balanceOf(event.params.to)
     raribleBalance.save()
 
     // let previousOwner = event.params.from.toHex()
