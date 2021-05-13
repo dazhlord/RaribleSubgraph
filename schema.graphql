@@ -9,3 +9,10 @@ type RaribleBalance @entity {
   id: ID! #owner address
   amount: BigInt! #the amount of the token
 }
+
+type TransferTrace @entity{
+  id: ID! #entity id
+  from: Bytes! #from address
+  to: Bytes! #to address
+  timestamp: BigInt! #timestamp of the transfer action
+}
