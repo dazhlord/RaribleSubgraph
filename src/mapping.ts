@@ -1,6 +1,6 @@
 import { Transfer, Rarible } from '../generated/Rarible/Rarible'
 import { RaribleOwner, RaribleBalance, TransferTrace } from '../generated/schema'
-import { BigInt } from "@graphprotocol/graph-ts"
+import { BigInt, log } from "@graphprotocol/graph-ts"
 
 export function handleTransfer(event: Transfer): void {
     //let id = event.transaction.hash.toHex()
@@ -26,7 +26,13 @@ export function handleTransfer(event: Transfer): void {
     //update the amount of the token hold by the owner "to"
     let contract = Rarible.bind(event.address)
     let raribleBalance = new RaribleBalance(event.params.to.toHex())
-    raribleBalance.amount = contract.try_balanceOf(event.params.to).value
+    let callResult = contract.try_balanceOf(event.params.to)
+    if (callResult.reverted) {
+        log.info("getGravatar reverted", [])
+      } else {
+        raribleBalance.amount = callResult.value
+      }
+    //raribleBalance.amount = contract.try_balanceOf(event.params.to).value
     raribleBalance.save()
 
     // let previousOwner = event.params.from.toHex()
