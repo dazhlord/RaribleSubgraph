@@ -9,7 +9,8 @@
     "deploy": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ Cuinf/Rarible",
     "create-local": "graph create --node http://localhost:8020/ Cuinf/Rarible",
     "remove-local": "graph remove --node http://localhost:8020/ Cuinf/Rarible",
-    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 Cuinf/Rarible"
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 Cuinf/Rarible",
+    "prepare:mainnet": "mustache config/mainnet.json subgraph.template.yaml > subgraph.yaml"
   },
   "devDependencies": {
     "@graphprotocol/graph-cli": "^0.20.0",
