@@ -16,6 +16,8 @@ dataSources:
       language: wasm/assemblyscript
       entities:
         - RaribleOwner
+        - RaribleBalance
+        - TransferTrace
       abis:
         - name: Rarible
           file: ./abis/Rarible.json
