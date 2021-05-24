@@ -26,10 +26,10 @@ export function handleTransfer(event: Transfer): void {
     let raribleBalance = new RaribleBalance(event.params.to.toHex())
     let callResult = contract.try_balanceOf(event.params.to)
     if (callResult.reverted) {
-        log.info("getGravatar reverted", [])
-      } else {
-        raribleBalance.amount = callResult.value
-      }
+        log.info("getBalanceOf reverted", [])
+      } 
+    raribleBalance.amount = callResult.value
+    log.info('Update token balance: id: {}, address: {}, balance: {}', [event.params.to.toHex(), event.address.toString(), raribleBalance.amount.toString()]);  
     //raribleBalance.amount = contract.try_balanceOf(event.params.to).value
     raribleBalance.save()
 
